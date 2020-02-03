@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NewsTodayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Entertainment">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Author" Type="varchar" MaxLength="500" />
+          <Property Name="Desp" Type="varchar" MaxLength="500" />
+          <Property Name="urlToImg" Type="varchar" MaxLength="500" />
+          <Property Name="Content" Type="varchar" MaxLength="500" />
+          <Property Name="PublishedAt" Type="datetime" />
+          <Property Name="NiD" Type="int" />
+        </EntityType>
+        <EntityType Name="General">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Author" Type="varchar" MaxLength="500" />
+          <Property Name="Desp" Type="varchar" MaxLength="500" />
+          <Property Name="urlToImg" Type="varchar" MaxLength="500" />
+          <Property Name="Content" Type="varchar" MaxLength="500" />
+          <Property Name="PublishedAt" Type="datetime" />
+          <Property Name="NiD" Type="int" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+          <Property Name="News_Count" Type="int" />
+        </EntityType>
+        <EntityType Name="Sports">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Author" Type="varchar" MaxLength="500" />
+          <Property Name="Desp" Type="varchar" MaxLength="500" />
+          <Property Name="urlToImg" Type="varchar" MaxLength="500" />
+          <Property Name="Content" Type="varchar" MaxLength="500" />
+          <Property Name="PublishedAt" Type="datetime" />
+          <Property Name="NiD" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Imei" />
+          </Key>
+          <Property Name="Imei" Type="int" Nullable="false" />
+          <Property Name="CountGeneral" Type="int" />
+          <Property Name="CountSports" Type="int" />
+          <Property Name="CountEntertainment" Type="int" />
+        </EntityType>
+        <Association Name="FK__Entertainme__NiD__4D94879B">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Entertainment" Type="Self.Entertainment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsID" />
+            </Principal>
+            <Dependent Role="Entertainment">
+              <PropertyRef Name="NiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__General__NiD__5070F446">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="General" Type="Self.General" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsID" />
+            </Principal>
+            <Dependent Role="General">
+              <PropertyRef Name="NiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sports__NiD__5441852A">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Sports" Type="Self.Sports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsID" />
+            </Principal>
+            <Dependent Role="Sports">
+              <PropertyRef Name="NiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NewsTodayModelStoreContainer">
+          <EntitySet Name="Entertainment" EntityType="Self.Entertainment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="General" EntityType="Self.General" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sports" EntityType="Self.Sports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Entertainme__NiD__4D94879B" Association="Self.FK__Entertainme__NiD__4D94879B">
+            <End Role="News" EntitySet="News" />
+            <End Role="Entertainment" EntitySet="Entertainment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__General__NiD__5070F446" Association="Self.FK__General__NiD__5070F446">
+            <End Role="News" EntitySet="News" />
+            <End Role="General" EntitySet="General" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sports__NiD__5441852A" Association="Self.FK__Sports__NiD__5441852A">
+            <End Role="News" EntitySet="News" />
+            <End Role="Sports" EntitySet="Sports" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NewsTodayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Entertainment">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Desp" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="urlToImg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedAt" Type="DateTime" Precision="3" />
+          <Property Name="NiD" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="Self.FK__Entertainme__NiD__4D94879B" FromRole="Entertainment" ToRole="News" />
+        </EntityType>
+        <EntityType Name="General">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Desp" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="urlToImg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedAt" Type="DateTime" Precision="3" />
+          <Property Name="NiD" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="Self.FK__General__NiD__5070F446" FromRole="General" ToRole="News" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="News_Count" Type="Int32" />
+          <NavigationProperty Name="Entertainments" Relationship="Self.FK__Entertainme__NiD__4D94879B" FromRole="News" ToRole="Entertainment" />
+          <NavigationProperty Name="Generals" Relationship="Self.FK__General__NiD__5070F446" FromRole="News" ToRole="General" />
+          <NavigationProperty Name="Sports" Relationship="Self.FK__Sports__NiD__5441852A" FromRole="News" ToRole="Sports" />
+        </EntityType>
+        <EntityType Name="Sport">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Desp" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="urlToImg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedAt" Type="DateTime" Precision="3" />
+          <Property Name="NiD" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="Self.FK__Sports__NiD__5441852A" FromRole="Sports" ToRole="News" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Imei" />
+          </Key>
+          <Property Name="Imei" Type="Int32" Nullable="false" />
+          <Property Name="CountGeneral" Type="Int32" />
+          <Property Name="CountSports" Type="Int32" />
+          <Property Name="CountEntertainment" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__Entertainme__NiD__4D94879B">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Entertainment" Type="Self.Entertainment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsID" />
+            </Principal>
+            <Dependent Role="Entertainment">
+              <PropertyRef Name="NiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__General__NiD__5070F446">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="General" Type="Self.General" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsID" />
+            </Principal>
+            <Dependent Role="General">
+              <PropertyRef Name="NiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sports__NiD__5441852A">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Sports" Type="Self.Sport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsID" />
+            </Principal>
+            <Dependent Role="Sports">
+              <PropertyRef Name="NiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NewsTodayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Entertainments" EntityType="Self.Entertainment" />
+          <EntitySet Name="Generals" EntityType="Self.General" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Sports" EntityType="Self.Sport" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Entertainme__NiD__4D94879B" Association="Self.FK__Entertainme__NiD__4D94879B">
+            <End Role="News" EntitySet="News" />
+            <End Role="Entertainment" EntitySet="Entertainments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__General__NiD__5070F446" Association="Self.FK__General__NiD__5070F446">
+            <End Role="News" EntitySet="News" />
+            <End Role="General" EntitySet="Generals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sports__NiD__5441852A" Association="Self.FK__Sports__NiD__5441852A">
+            <End Role="News" EntitySet="News" />
+            <End Role="Sports" EntitySet="Sports" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NewsTodayModelStoreContainer" CdmEntityContainer="NewsTodayEntities">
+          <EntitySetMapping Name="Entertainments">
+            <EntityTypeMapping TypeName="NewsTodayModel.Entertainment">
+              <MappingFragment StoreEntitySet="Entertainment">
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="urlToImg" ColumnName="urlToImg" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+                <ScalarProperty Name="NiD" ColumnName="NiD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generals">
+            <EntityTypeMapping TypeName="NewsTodayModel.General">
+              <MappingFragment StoreEntitySet="General">
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="urlToImg" ColumnName="urlToImg" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+                <ScalarProperty Name="NiD" ColumnName="NiD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="NewsTodayModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="News_Count" ColumnName="News_Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sports">
+            <EntityTypeMapping TypeName="NewsTodayModel.Sport">
+              <MappingFragment StoreEntitySet="Sports">
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="urlToImg" ColumnName="urlToImg" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+                <ScalarProperty Name="NiD" ColumnName="NiD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NewsTodayModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Imei" ColumnName="Imei" />
+                <ScalarProperty Name="CountGeneral" ColumnName="CountGeneral" />
+                <ScalarProperty Name="CountSports" ColumnName="CountSports" />
+                <ScalarProperty Name="CountEntertainment" ColumnName="CountEntertainment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

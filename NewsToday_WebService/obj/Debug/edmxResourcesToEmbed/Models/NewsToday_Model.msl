@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NewsTodayModelStoreContainer" CdmEntityContainer="NewsTodayEntities">
+    <EntitySetMapping Name="Entertainments">
+      <EntityTypeMapping TypeName="NewsTodayModel.Entertainment">
+        <MappingFragment StoreEntitySet="Entertainment">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Desp" ColumnName="Desp" />
+          <ScalarProperty Name="urlToImg" ColumnName="urlToImg" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+          <ScalarProperty Name="NiD" ColumnName="NiD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Generals">
+      <EntityTypeMapping TypeName="NewsTodayModel.General">
+        <MappingFragment StoreEntitySet="General">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Desp" ColumnName="Desp" />
+          <ScalarProperty Name="urlToImg" ColumnName="urlToImg" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+          <ScalarProperty Name="NiD" ColumnName="NiD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="NewsTodayModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="News_Count" ColumnName="News_Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sports">
+      <EntityTypeMapping TypeName="NewsTodayModel.Sport">
+        <MappingFragment StoreEntitySet="Sports">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Desp" ColumnName="Desp" />
+          <ScalarProperty Name="urlToImg" ColumnName="urlToImg" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+          <ScalarProperty Name="NiD" ColumnName="NiD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="NewsTodayModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Imei" ColumnName="Imei" />
+          <ScalarProperty Name="CountGeneral" ColumnName="CountGeneral" />
+          <ScalarProperty Name="CountSports" ColumnName="CountSports" />
+          <ScalarProperty Name="CountEntertainment" ColumnName="CountEntertainment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
